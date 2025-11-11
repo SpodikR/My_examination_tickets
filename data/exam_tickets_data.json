@@ -1,0 +1,39 @@
+{
+    "Білет №1": {
+        "questions": [
+            {
+                "text": "Запитання 1",
+                "answer_text": "",
+                "answer_image": ""
+            },
+            {
+                "text": "Запитання 2",
+                "answer_text": "",
+                "answer_image": ""
+            },
+            {
+                "text": "Запитання 3",
+                "answer_text": "",
+                "answer_image": ""
+            },
+            {
+                "text": "Запитання 4",
+                "answer_text": "",
+                "answer_image": ""
+            },
+            {
+                "text": "Запитання 5",
+                "answer_text": "",
+                "answer_image": ""
+            },
+            {
+                "text": "Запитання 6",
+                "answer_text": "",
+                "answer_image": ""
+            }
+        ]
+    },
+    "Білет №2": {},
+    "Білет №3": {},
+    "Білет №4": {}
+}

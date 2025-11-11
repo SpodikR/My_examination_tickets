@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.log
+
+# Virtualenv / pipenv / pyenv
+venv/
+env/
+ENV/
+.pipenv/
+.python-version
+
+# Kivy / KivyMD
+.kivy/
+.kivy_build/
+.kivy_cache/
+.kivy_install/
+.kivy_config.ini
+
+# Android build artifacts (Buildozer)
+bin/
+*.apk
+*.aab
+*.keystore
+buildozer.spec
+.buildozer/
+
+# VS Code
+.vscode/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+
