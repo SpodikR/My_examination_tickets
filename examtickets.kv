@@ -1,164 +1,223 @@
 #:kivy 2.2.1
+# examtickets.kv
 
 <MainScreen>:
     tickets_list_layout: tickets_list_layout
     BoxLayout:
         orientation: 'vertical'
-        padding: 15
-        spacing: 10
+        padding: dp(15)
+        spacing: dp(10)
         canvas.before:
             Color:
                 rgba:  0, 0.6, 0.78, 1  # лагунний бірюзово-блакитний
             Rectangle:
                 pos: self.pos
                 size: self.size
-        Label:
+        MDLabel: # Змінено на MDLabel
             text: '[b]Мої Білети[/b]'
             markup: True
             font_size: '22sp'
             size_hint_y: None
-            height: 60
+            height: dp(60)
+            halign: 'center' # Центруємо текст
 
         ScrollView:
-            BoxLayout:
+            MDBoxLayout: # Змінено на MDBoxLayout
                 id: tickets_list_layout
                 orientation: 'vertical'
                 size_hint_y: None
                 height: self.minimum_height
 
-        Button:
+        MDRaisedButton: # Змінено на MDRaisedButton
             text: 'Додати білет'
             size_hint_y: None
-            height: 50
-            on_press: root.manager.current = 'add_ticket_screen'
+            height: dp(50)
+            on_release: root.manager.current = 'add_ticket_screen' # Змінено на on_release
 
 <AddTicketScreen>:
     ticket_name_input: ticket_name_input
-    questions_inputs: questions_inputs # Прив'язуємо ObjectProperty
+    questions_inputs: questions_inputs
     BoxLayout:
         orientation: 'vertical'
-        padding: 15
-        spacing: 10
+        padding: dp(15)
+        spacing: dp(10)
         canvas.before:
             Color:
                 rgba: 0.95, 0.95, 0.95, 1
             Rectangle:
                 pos: self.pos
                 size: self.size
-        Label:
+        MDLabel: # Змінено на MDLabel
             text: '[b]Назва нового білета[/b]'
             markup: True
             font_size: '20sp'
             size_hint_y: None
-            height: 60
-            color: 0.1, 0.5, 0.7, 1  # ← тут задається колір тексту (наприклад, лагунний)
+            height: dp(60)
+            color: 0.1, 0.5, 0.7, 1
+            halign: 'center'
 
-        TextInput:
+        MDTextField: # Змінено на MDTextField
             id: ticket_name_input
             hint_text: 'Введіть назву'
             size_hint_y: None
-            height: 50
+            height: dp(50)
         
-        Label:
+        MDLabel: # Змінено на MDLabel
             text: '[b]Запитання[/b]'
             markup: True
             font_size: '18sp'
             size_hint_y: None
-            height: 40
+            height: dp(40)
+            halign: 'center'
         
         ScrollView:
-            BoxLayout:
-                id: questions_inputs # Ідентифікатор для BoxLayout з TextInput-ами
+            MDBoxLayout: # Змінено на MDBoxLayout
+                id: questions_inputs
                 orientation: 'vertical'
                 size_hint_y: None
                 height: self.minimum_height
-                spacing: 5 # Додано для кращого вигляду
+                spacing: dp(5)
 
-        Button:
+        MDRaisedButton: # Змінено на MDRaisedButton
             text: 'Зберегти'
             size_hint_y: None
-            height: 50
-            on_press: root.save_ticket()
+            height: dp(50)
+            on_release: root.save_ticket() # Змінено на on_release
 
-        Button:
+        MDFlatButton: # Змінено на MDFlatButton
             text: 'Назад'
             size_hint_y: None
-            height: 50
-            on_press: root.manager.current = 'main_screen'
-<EditTicketScreen>:
-    BoxLayout:
-        orientation: 'vertical'
-        padding: 15
-        spacing: 10
-        canvas.before:
-            Color:
-                rgba: 0.95, 0.95, 0.95, 1
-            Rectangle:
-                pos: self.pos
-                size: self.size
+            height: dp(50)
+            on_release: root.manager.current = 'main_screen' # Змінено на on_release
 
-        Label:
-            text: '[b]Редагувати білет[/b]'
-            markup: True
-            font_size: '20sp'
-            size_hint_y: None
-            height: 60
-            color: 0.1, 0.5, 0.7, 1
-
-        TextInput:
-            id: new_ticket_name_input
-            hint_text: 'Нова назва білета'
-            size_hint_y: None
-            height: 50
-
-        Button:
-            text: 'Зберегти'
-            size_hint_y: None
-            height: 50
-            on_press: root.save_changes()
-
-        Button:
-            text: 'Назад'
-            size_hint_y: None
-            height: 50
-            on_press: root.go_back()
 <TicketQuestionsScreen>:
     BoxLayout:
         orientation: 'vertical'
-        padding: 15
-        spacing: 10
+        padding: dp(15)
+        spacing: dp(10)
         canvas.before:
             Color:
-                rgba:  0, 0.6, 0.78, 1  # лагунний бірюзово-блакитний
+                rgba: 0, 0.6, 0.78, 1  # лагунний бірюзово-блакитний фон
             Rectangle:
                 pos: self.pos
                 size: self.size
 
-        Label:
-            id: ticket_title # Додаємо ідентифікатор для заголовка
+        MDLabel:
+            id: ticket_title
             text: '[b]Запитання білета[/b]'
             markup: True
-            font_size: '20sp'
+            font_style: "H5"
+            halign: 'center'
             size_hint_y: None
-            height: 60
+            height: dp(60)
 
         ScrollView:
-            BoxLayout:
+            do_scroll_x: False
+            MDBoxLayout:
                 id: questions_list
                 orientation: 'vertical'
                 size_hint_y: None
                 height: self.minimum_height
+                adaptive_height: True
+                spacing: dp(8)
+                padding: dp(8)
 
-        Button:
+        MDFlatButton:
             text: 'Назад'
             size_hint_y: None
-            height: 50
-            on_press: root.manager.current = 'main_screen'
+            height: dp(50)
+            pos_hint: {'center_x': 0.5}
+            on_release: root.manager.current = 'main_screen'
+       
 <EditQuestionScreen>:
     BoxLayout:
+        orientation: "vertical"
+        padding: dp(24)
+        spacing: dp(12)
+        canvas.before:
+            Color:
+                rgba: 1, 0, 0, 0.2
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        MDLabel:
+            text: "Редагування запитання - ТЕСТ"
+            halign: "center"
+            font_style: "H6"
+            size_hint_y: None
+            height: dp(48)
+        BoxLayout:
+            orientation: "vertical"
+            padding: [0, 0, 0, dp(6)]  # нижній відступ для helper_text
+            MDTextField:
+                id: question_text_input
+                hint_text: "Текст запитання - ТЕСТ"
+                multiline: True
+                size_hint_y: None
+                # height: dp(150)
+                adaptive_height: True
+                helper_text: "Введіть чітко і по суті"
+                helper_text_mode: "on_focus"
+                mode: "fill"
+                font_size: "16sp"
+
+        MDTextField:
+            id: answer_text_input
+            hint_text: "Текст відповіді - ТЕСТ"
+            multiline: True
+            size_hint_y: None
+            # height: dp(180)
+            adaptive_height: True
+            helper_text: "Можна лишити порожнім, якщо додаєш картинку"
+            helper_text_mode: "on_focus"
+            mode: "fill"
+            
+        # ЦЕЙ БЛОК ДЛЯ КНОПКИ ЗОБРАЖЕННЯ ТА ПОЛЯ ШЛЯХУ
+        BoxLayout: # <--- Зверніть увагу на його властивості
+            size_hint_y: None
+            height: dp(48) # Гарантуємо, що висота є
+            spacing: dp(8)
+
+            MDRaisedButton:
+                text: "Вибрати зображення"
+                on_release: root.open_image_picker()
+                size_hint_x: 0.5 # Додамо size_hint_x, щоб кнопка займала певну ширину
+
+            MDTextField:
+                id: image_path_input
+                hint_text: "Шлях до скріншоту"
+                readonly: True
+                mode: "fill"
+                fill_color: 0,0,0,0.1
+                size_hint_x: 0.5 # І це поле теж
+
+        Image:
+            id: image_preview
+            size_hint_y: None
+            height: dp(200) # Гарантуємо висоту для прев'ю зображення
+            
+            source: '' # Пустий шлях за замовчуванням
+
+        BoxLayout: # ЦЕЙ БЛОК ДЛЯ КНОПОК ЗБЕРЕГТИ/НАЗАД
+            size_hint_y: None
+            height: dp(48)
+            spacing: dp(8)
+
+            MDRaisedButton:
+                text: "Зберегти"
+                on_release: root.save_question()
+                size_hint_x: 0.5
+
+            MDFlatButton:
+                text: "Назад"
+                on_release: root.go_back()
+                size_hint_x: 0.5
+
+<EditTicketScreen>:
+    BoxLayout:
         orientation: 'vertical'
-        padding: 15
-        spacing: 10
+        padding: dp(15)
+        spacing: dp(10)
         canvas.before:
             Color:
                 rgba: 0.95, 0.95, 0.95, 1
@@ -166,49 +225,29 @@
                 pos: self.pos
                 size: self.size
 
-        Label:
-            text: '[b]Редагування запитання[/b]'
+        MDLabel:
+            text: '[b]Редагувати назву білета[/b]'
             markup: True
             font_size: '20sp'
             size_hint_y: None
-            height: 60
+            height: dp(60)
             color: 0.1, 0.5, 0.7, 1
+            halign: 'center'
 
-        TextInput:
-            id: question_input
-            hint_text: 'Текст запитання'
+        MDTextField:
+            id: new_ticket_name_input  # <--- ЦЬОГО БРАКУВАЛО
+            hint_text: 'Введіть нову назву білета'
             size_hint_y: None
-            height: 50
+            height: dp(50)
 
-        TextInput:
-            id: answer_input
-            hint_text: 'Текст відповіді'
+        MDRaisedButton:
+            text: 'Зберегти зміни'
             size_hint_y: None
-            height: 100 # Збільшено висоту для відповіді
-            multiline: True # Дозволити кілька рядків
+            height: dp(50)
+            on_release: root.save_changes()
 
-        TextInput:
-            id: image_path_input
-            hint_text: 'Шлях до скріншоту (наприклад, C:/Users/user/image.png)'
-            size_hint_y: None
-            height: 50
-        
-        Image:
-            id: image_preview
-            source: ''
-            size_hint_y: None
-            height: 200
-            allow_stretch: True
-            keep_ratio: True
-
-        Button:
-            text: 'Зберегти'
-            size_hint_y: None
-            height: 50
-            on_press: root.save_question()
-
-        Button:
+        MDFlatButton:
             text: 'Назад'
             size_hint_y: None
-            height: 50
-            on_press: root.manager.current = 'ticket_questions_screen'
+            height: dp(50)
+            on_release: root.go_back()

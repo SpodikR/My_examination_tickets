@@ -2,6 +2,40 @@
     "Білет №1": {
         "questions": [
             {
+                "text": "Запитання 1 Ghfdbkmyt",
+                "answer_text": "Це відповідь! sdfagsd",
+                "answer_image": ""
+            },
+            {
+                "text": "Запитання 2",
+                "answer_text": "",
+                "answer_image": "images\\2022-03-10.png"
+            },
+            {
+                "text": "Запитання 3",
+                "answer_text": "",
+                "answer_image": ""
+            },
+            {
+                "text": "Запитання 4",
+                "answer_text": "",
+                "answer_image": ""
+            },
+            {
+                "text": "Запитання 5",
+                "answer_text": "",
+                "answer_image": ""
+            },
+            {
+                "text": "Запитання 6",
+                "answer_text": "",
+                "answer_image": ""
+            }
+        ]
+    },
+    "Білет №2": {
+        "questions": [
+            {
                 "text": "Запитання 1",
                 "answer_text": "",
                 "answer_image": ""
@@ -33,7 +67,73 @@
             }
         ]
     },
-    "Білет №2": {},
     "Білет №3": {},
-    "Білет №4": {}
+    "Білет №4": {
+        "questions": [
+            {
+                "text": "Запитання 1",
+                "answer_text": "",
+                "answer_image": ""
+            },
+            {
+                "text": "Запитання 2",
+                "answer_text": "",
+                "answer_image": ""
+            },
+            {
+                "text": "Запитання 3",
+                "answer_text": "",
+                "answer_image": ""
+            },
+            {
+                "text": "Запитання 4",
+                "answer_text": "",
+                "answer_image": ""
+            },
+            {
+                "text": "Запитання 5",
+                "answer_text": "",
+                "answer_image": ""
+            },
+            {
+                "text": "Запитання 6",
+                "answer_text": "",
+                "answer_image": ""
+            }
+        ]
+    },
+    "Білет №5": {
+        "questions": [
+            {
+                "text": "ПР",
+                "answer_text": "",
+                "answer_image": "images\\pngtree-tiny-3d-artists-a-little-painter-with-a-photo-png-image_13608914.png"
+            },
+            {
+                "text": "",
+                "answer_text": "",
+                "answer_image": ""
+            },
+            {
+                "text": "",
+                "answer_text": "",
+                "answer_image": ""
+            },
+            {
+                "text": "",
+                "answer_text": "",
+                "answer_image": ""
+            },
+            {
+                "text": "",
+                "answer_text": "",
+                "answer_image": ""
+            },
+            {
+                "text": "",
+                "answer_text": "",
+                "answer_image": ""
+            }
+        ]
+    }
 }
