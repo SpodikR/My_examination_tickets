@@ -20,6 +20,7 @@ from kivymd.uix.screen import MDScreen
 from kivymd.uix.button import MDRaisedButton, MDFlatButton
 from kivymd.uix.textfield import MDTextField
 from kivymd.uix.label import MDLabel
+from kivymd.toast import toast
 
 # ---------------------
 import shutil
@@ -285,6 +286,39 @@ class EditQuestionScreen(MDScreen):
         self.load_question_data()
         print("🧠 EditQuestionScreen loaded")
 
+    def delete_image(self):
+        """
+        Видаляє зображення, якщо шлях вказано і файл існує.
+        """
+        current_path = self.ids.image_path_input.text.strip()
+
+        if not current_path:
+            toast("⚠️ Шлях до зображення не вказано")
+            return
+
+        # Визначаємо абсолютний шлях
+        abs_path = current_path if os.path.isabs(current_path) else os.path.join(
+            App.get_running_app().root_dir, current_path
+        )
+
+        # Перевірка на існування файлу
+        if not os.path.exists(abs_path):
+            toast("⚠️ Файл не знайдено")
+            return
+
+        # Спроба видалити
+        try:
+            os.remove(abs_path)
+            toast("✅ Зображення успішно видалено")
+        except Exception as e:
+            toast(f"⚠️ Помилка при видаленні: {e}")
+            return
+
+        # Очищення поля та прев’ю
+        self.ids.image_path_input.text = ""
+        self.update_image_preview("")
+
+
 
 class MainScreen(Screen):
     tickets_list_layout = ObjectProperty(None)
@@ -488,6 +522,10 @@ class TicketQuestionsScreen(Screen):
 
 
 class ExamTicketsApp(MDApp):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.root_dir = os.path.dirname(os.path.abspath(__file__))  # або інший шлях, якщо треба
+        
     def build(self):
         self.title = "Моя екзаменаційна шпаргалка"
         self.icon = "images/icon_app.png"

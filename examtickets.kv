@@ -189,7 +189,14 @@
                 readonly: True
                 mode: "fill"
                 fill_color: 0,0,0,0.1
-                size_hint_x: 0.5 # І це поле теж
+                size_hint_x: 0.35 # І це поле теж
+            
+            MDIconButton:
+                icon: "delete"
+                tooltip_text: "Видалити зображення"
+                on_release: root.delete_image()
+                theme_icon_color: "Custom"
+                icon_color: 1, 0, 0, 1
 
         Image:
             id: image_preview

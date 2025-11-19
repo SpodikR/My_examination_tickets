@@ -40,3 +40,20 @@ Thumbs.db
 # Environment variables
 .env
 
+# macOS / Linux / Windows backup files
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# JetBrains IDEs (якщо колись відкриєш у PyCharm)
+.idea/
+
+# Coverage / testing
+.coverage
+htmlcov/
+.cache/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
